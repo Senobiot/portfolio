@@ -1,0 +1,11 @@
+.AboutWrapper {
+    position: relative;
+    margin: 0 auto;
+    overflow-y: hidden;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    padding: 0 150px;
+    font-family: 'Arial', serif;
+    background-color: rgb(78, 109, 78);
+}
