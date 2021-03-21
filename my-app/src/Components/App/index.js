@@ -4,6 +4,7 @@ import { Navigation, Route } from "react-tiger-transition";
 import Home from './../Home'
 import About from './../About'
 import Works from './../Works'
+import WorkCategories from './../WorkCategories'
 import { DetailScreen } from './../Works'
 
 import './style.css'
@@ -20,6 +21,9 @@ const App = () => (
       </Route>
       <Route exact path="/Works" component={About}>
         <Works />
+      </Route>
+      <Route exact path="/WorkCategories" component={About}>
+        <WorkCategories />
       </Route>
       <Route exact path="/detail/:work" component={DetailScreen}>
         <DetailScreen />

@@ -12,7 +12,7 @@ import Paper from "@material-ui/core/Paper";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import CloseIcon from "@material-ui/icons/Close";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
-
+import MediaCard from './MediaCard'
 import "react-tiger-transition/styles/main.min.css";
 import {
   Navigation,
@@ -76,82 +76,51 @@ flip({
   duration: 200
 });
 
-// const useStyles = makeStyles(theme => ({
-//   screen: {
-//     backgroundColor: "white"
-//   },
-//   loginScreen: {
-//     display: "flex",
-//     alignItems: "center",
-//     justifyContent: "center",
-//     flexDirection: "column",
-//     backgroundColor: "white"
-//   },
-//   margin: {
-//     margin: theme.spacing(2)
-//   },
-//   menuButton: {
-//     marginRight: theme.spacing(2)
-//   },
-//   title: {
-//     flexGrow: 1
-//   },
-//   menu: {
-//     width: "100%",
-//     maxWidth: 360,
-//     backgroundColor: theme.palette.background.paper
-//   },
-//   feedItemRoot: {
-//     margin: theme.spacing(2)
-//   },
-//   cancelAuth: {
-//     position: "absolute",
-//     top: 0,
-//     right: 0,
-//     margin: theme.spacing(2)
-//   },
-//   hide: {
-//     opacity: 0,
-//     visibility: "hidden",
-//     zIndex: -1
-//   },
-//   previous: {
-//      height: `calc(100% - 64px)`,
-//     position: "absolute",
-//     width: "50%",
-//     top: 64,
-//     left: 0,
-//     zIndex: 3
-//   },
-//   next: {
-//     height: `calc(100% - 64px)`,
-//     position: "absolute",
-//     width: "50%",
-//     top: 64,
-//     right: 0,
-//     zIndex: 3
-//   },
-  // code: {
-  //   color: deepOrange[500],
-  //   fontSize: 14,
-  //   fontFamily: "monospace",
-  //   backgroundColor: grey[100],
-  //   borderRadius: 5,
-  //   padding: theme.spacing(0.4, 0.6, 0.4, 0.6)
-  // }
-// }));
+const useStyles = makeStyles(theme => ({
+  screen: {
+    backgroundColor: "white"
+  },
+  loginScreen: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column",
+    backgroundColor: "white"
+  },
+  margin: {
+    margin: theme.spacing(2)
+  },
+  menuButton: {
+    marginRight: theme.spacing(2)
+  },
+  title: {
+    flexGrow: 1
+  },
+  menu: {
+    width: "100%",
+    maxWidth: 360,
+    backgroundColor: theme.palette.background.paper
+  },
+  feedItemRoot: {
+    margin: theme.spacing(2)
+  },
+  cancelAuth: {
+    position: "absolute",
+    top: 0,
+    right: 0,
+    margin: theme.spacing(2)
+  },
+  hide: {
+    opacity: 0,
+    visibility: "hidden",
+    zIndex: -1
+  },
+}));
 
-// document.getElementById("root").style.height = "100vh";
-// document.getElementById("root").style.backgroundColor = "#333";
-
-
-
-
-const Works = () => {
+const Works = ( {works} ) => {
   return (
-    <Screen className="WorksWrapper">
-      <WorksHeader />
-      <FeedList />
+    <Screen className="WorksWrapper" style={{overflowY: 'auto'}}>
+      <FeedList works={works}/>
     </Screen>
   );
 };
@@ -159,34 +128,61 @@ const Works = () => {
 export default Works;
 
 const DetailScreen = () => {
-  const [ color, setColor ] = useState({});
+  const [ currentMemo, setMemo ] = useState({});
   const { work } = useParams();
-  const current = dataList.find(e => e.name === work);
+  let current;
+  for (const category in dataList) {
+    const findItem = dataList[category].find(e => e.name === work);
+    if (findItem) {current = findItem};
+    }
 
   useEffect(() => {
     if (work) {
-      setColor({ color: current.bgColor });
+      setMemo({ currentMemo: current });
     }
   }, [work]);
 
   return (
-    <Screen style={{backgroundColor: color.color}}>
-        <Link to="/Works" transition="glideOut-right">
-          BACK
-        </Link>
+    <Screen className="detailWrapper">
+        <DetailHeader title={work}/>
+        <div className="workBg" style={{ backgroundImage: `url(${current ? current.logo : currentMemo.logo})` }}></div>
+        <MediaCard 
+        image={current ? current.logo : currentMemo.logo}
+        title={current ? current.name : currentMemo.name}
+        description={current ? current.descriptionFull : currentMemo.descriptionFull}
+        ghLink={current ? current.ghLink : currentMemo.ghLink}
+        deployLink={current ? current.deployLink : currentMemo.deployLink}
+        stack={current ? current.stack : currentMemo.stack}
+        additional={current ? current.additional : currentMemo.additional}
+        date={current ? current.date : currentMemo.date}
+        />
     </Screen>
   );
 };
 
 export { DetailScreen };
 
-const WorksHeader = () => {
+const DetailHeader = ({ title }) => {
+  const classes = useStyles();
   return (
-    <div className="WorksHeader"> 
-      <Link to="/" transition="glideOut-right">
-          <div className="arrow"></div>
-      </Link>
-      <div className="WorksHeaderTitle">examples of my work</div>
+    <div style={{marginBottom: 100}}>
+      <AppBar position="static" color="default">
+        <Toolbar>
+          <IconButton
+            edge="start"
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="menu"
+          >
+            <Link to="/WorkCategories" transition="glideOut-right">
+              <ArrowBackIcon />
+            </Link>
+          </IconButton>
+          <Typography variant="h6" className={classes.title}>
+            {title}
+          </Typography>
+        </Toolbar>
+      </AppBar>
     </div>
   );
 };
@@ -194,19 +190,19 @@ const WorksHeader = () => {
 const FeedItem = ({ work }) => {
   return (
     <Paper>
-      <Link to={`/detail/${work.name}`} transition="glideIn-left">
-        <div style={{ backgroundColor: work.bgColor, width: "100%", height: 200 }}>
-          <Paper elevation={3} style={{ width: 200, height: "80%" }}/>
-        </div>
+      <Link to={`/detail/${work.name}`} transition="glideIn-left" style={{ backgroundColor: work.bgColor }} className="workTile">
+          <Paper elevation={3} className="workPaper" style={{ backgroundImage: `url(${work.logo})` }}/>
+          <h2>{work.name}</h2>
+          <h3>{work.description}</h3>
       </Link>
     </Paper>
   );
 };
 
-const FeedList = () => {
+const FeedList = ({works}) => {
   return (
     <React.Fragment>
-      {dataList.map(el => (
+      {works.map(el => (
         <FeedItem key={el.name} work={el}/>
       ))}
     </React.Fragment>
