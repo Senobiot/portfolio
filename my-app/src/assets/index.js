@@ -31,3 +31,12 @@ export { default as browsergame } from './works/browsergame.jpg';
 export { default as apple } from './works/apple.jpg';
 export { default as photolanding } from './works/photolanding.jpg';
 export { default as itangels } from './works/it-angels.jpg';
+
+export { default as myPhoto } from './about/avatar.jpg';
+export { default as univerImg } from './about/bseu.jpg';
+export { default as rsImg } from './about/rsschool.png';
+export { default as nexo } from './about/nexo.png';
+export { default as minskprom } from './about/minskprom.jpg';
+export { default as integral } from './about/integral.jpg';
+export { default as expert } from './about/expert.jpg';
+export { default as certificate } from './about/certificate.jpg';

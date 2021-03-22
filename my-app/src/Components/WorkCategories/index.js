@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Works } from '../'
 import classNames from 'classnames';
 import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from "@material-ui/core/Toolbar";
@@ -8,8 +9,8 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { CSSTransition } from 'react-transition-group';
 import { drop, Link } from 'react-tiger-transition';
-import dataList from '../Works/data'
-import Works from '../Works/'
+import { dataList } from '../'
+
 import IconButton from "@material-ui/core/IconButton";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
@@ -81,9 +82,10 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const tabs = Object.keys(dataList);
+
 
 const WorkCategories = ({category, categoryHandler}) => {
+  const tabs = Object.keys(dataList);
   const classes = useStyles();
   const [value, setValue] = useState(tabs[category]);
   const [transition, setTransition] = useState('transition-left');
@@ -156,4 +158,5 @@ const WorkCategories = ({category, categoryHandler}) => {
     </div>
   );
 }
+
 export default WorkCategories;

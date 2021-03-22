@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import dataList from './data.js';
-import MediaCard from '../MediaCard'
+import { dataList } from '../';
+import { MediaCard } from '../'
 import { useParams } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";

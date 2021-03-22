@@ -72,23 +72,23 @@
 }
 
 .tabSkew:nth-child(1):after {
-    background-image: url('./../../assets/siluet4.png');
+    background-image: url('./../../assets/home/siluet.png');
 }
 
 .tabSkew:nth-child(2):after {
-    background-image: url('./../../assets/papers.png');
+    background-image: url('./../../assets/home/papers.png');
     background-size: 50%;
     opacity: 0.4;
 }
 
 .tabSkew:nth-child(3):after {
-    background-image: url('./../../assets/tech.png');
+    background-image: url('./../../assets/home/tech.png');
     background-size: 50%;
     opacity: 0.5;
 }
 
 .tabSkew:nth-child(4):after {
-    background-image: url('./../../assets/phone4.png');
+    background-image: url('./../../assets/home/phone.png');
     background-size: 50%;
     opacity: 0.7;
 }
@@ -126,7 +126,7 @@
     left: 10px;
     height: 100px;
     z-index: -2;
-    background: url('../../assets/css-2.png') no-repeat 50%/cover;
+    background: url('../../assets/home/css.png') no-repeat 50%/cover;
     filter: blur(1px) grayscale(0.5);
   }
   
@@ -137,7 +137,7 @@
     left: 50px;
     height: 200px;
     z-index: -1;
-    background: url('../../assets/html-0.png') no-repeat 50%/cover;
+    background: url('../../assets/home/html.png') no-repeat 50%/cover;
     filter: blur(1px);
     opacity: 0.4;
   }
@@ -148,7 +148,7 @@
     left: 100px;
     width: 200px;
     height: 250px;
-    background: url('../../assets/js.png') no-repeat 50%/contain;
+    background: url('../../assets/home/js.png') no-repeat 50%/contain;
     filter: blur(1px) grayscale(0.5);
     opacity: 0.5;
     transform-style: preserve-3d;
@@ -161,7 +161,7 @@
     width: 175px;
     height: 175px;
     z-index: -1;
-    background: url('../../assets/react-3.png') repeat-x 50%/contain;
+    background: url('../../assets/home/react.png') repeat-x 50%/contain;
     filter: blur(1px);
   }
   
@@ -172,7 +172,7 @@
     width: 150px;
     height: 150px;
     z-index: -1;
-    background: url('../../assets/redux.png') no-repeat 50%/contain;
+    background: url('../../assets/home/redux.png') no-repeat 50%/contain;
     filter: blur(1px) grayscale(0.5);
   }
 
@@ -183,7 +183,7 @@
     width: 200px;
     height: 200px;
     z-index: -1;
-    background: url('../../assets/node-2.png') no-repeat 50%/contain;
+    background: url('../../assets/home/node.png') no-repeat 50%/contain;
     filter: blur(1px) grayscale(0.5);
     transition: 0.3s;
     transition-timing-function: cubic-bezier(.25, .1, .25, 1);
@@ -197,5 +197,5 @@
     height: 100vh;
     z-index: -2;
     opacity: 0.5;
-    background: url('../../assets/main-bg.jpg') no-repeat 50%/cover;
+    background: url('../../assets/home/main-bg.jpg') no-repeat 50%/cover;
   }

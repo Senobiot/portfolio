@@ -1,5 +1,5 @@
 import React from "react";
-import { DetailHeader } from '../Works';
+import { DetailHeader } from '../';
 import { Screen } from "react-tiger-transition";
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -11,28 +11,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
-
-import myPhoto from './../../assets/avatar.jpg';
-import univerImg from './../../assets/bseu.jpg';
-import rsImg from './../../assets/rsschool.png';
-import nexo from './../../assets/nexo.png';
-import minskprom from './../../assets/minskprom.jpg';
-import integral from './../../assets/integral.jpg';
-import expert from './../../assets/expert.jpg';
-import certificate from './../../assets/certificate.jpg';
-
-import './style.css';
-
-const About = () => {
-return (
-    <Screen className='AboutWrapper'>
-        <DetailHeader backRoute={'/'} routeName={'Home'} right={true}/>
-        <AboutPaper className="aboutPaper">
-            header
-        </AboutPaper>
-    </Screen>
-    )};
-export default About;
+import { myPhoto, univerImg, rsImg, nexo, minskprom, integral, expert, certificate } from './../../assets'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,7 +22,14 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 'auto',
     transition: theme.transitions.create('transform', {
       duration: theme.transitions.duration.shortest,
-    }),
+    })},
+  aboutWrapper: {
+    overflowY: 'auto',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    paddingTop: '100px',
+    backgroundColor: '#5c6f80',
   },
   avatar: {
     width: '10vw',
@@ -62,13 +48,38 @@ const useStyles = makeStyles((theme) => ({
       display: 'flex',
       flexWrap: 'wrap'
   },
+  accHeader: {
+    fontSize: '20px',
+    letterSpacing: '2px',
+    color: '#5c6f80',
+    fontWeight: 700,
+    textTransform: 'uppercase',
+    textShadow: '0 1px 2px rgb(2, 2, 2)',
+  },
   cardHeader: {
       display: 'flex',
-      width: '100%'
+      width: '100%',
+      fontSize: '20px',
+      letterSpacing: '2px',
+      color: '#5c6f80',
+      fontWeight: 700,
+      textTransform: 'uppercase',
+      textShadow: '0 1px 2px rgb(2, 2, 2)',
   }
 }));
 
- function AboutPaper() {
+const About = () => {
+  const classes = useStyles();
+  return (
+      <Screen className={classes.aboutWrapper}>
+          <DetailHeader backRoute={'/'} routeName={'Home'} right={true}/>
+          <AboutPaper/>
+      </Screen>
+      )};
+
+export default About;
+
+ const AboutPaper = () => {
   const classes = useStyles();
 
   const getAge = (date) => { 
@@ -85,7 +96,7 @@ const useStyles = makeStyles((theme) => ({
   return (
     <Card className={classes.root}>
       <CardHeader
-        className="cardHeader"
+        className={classes.cardHeader}
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
               <img src={myPhoto} className={classes.avatarImg} alt='myPhoto'></img>
@@ -109,7 +120,7 @@ const useStyles = makeStyles((theme) => ({
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography className="accordeonHeader">Education</Typography>
+          <Typography className={classes.accHeader}>Education</Typography>
         </AccordionSummary>
         <AccordionDetails className={classes.accDetails}>
             <CardHeader
@@ -142,7 +153,7 @@ const useStyles = makeStyles((theme) => ({
           aria-controls="panel2a-content"
           id="panel2a-header"
         >
-          <Typography className="accordeonHeader">work experince</Typography>
+          <Typography className={classes.accHeader}>work experince</Typography>
         </AccordionSummary>
         <AccordionDetails className={classes.accDetails}>
             <CardHeader
@@ -201,7 +212,7 @@ const useStyles = makeStyles((theme) => ({
           aria-controls="panel3a-content"
           id="panel3a-header"
         >
-          <Typography className="accordeonHeader">Certificates</Typography>
+          <Typography className={classes.accHeader}>Certificates</Typography>
         </AccordionSummary>
         <AccordionDetails className={classes.accDetails}>
             <CardHeader
@@ -213,13 +224,11 @@ const useStyles = makeStyles((theme) => ({
                 }
                 title={
                     <a className={classes.link} target="_blank" rel="noopener noreferrer" href='https://app.rs.school/certificate/8ksyysmf'>
-                      <span>RS SChool Certificate Of Completion<br></br>
-                      JS/FE 2020 Q3 (JAVASCRIPT), 24.02.2021</span> 
+                      <span>RS SChool Certificate Of Completion JS/FE 2020 Q3 (JAVASCRIPT), 24.02.2021</span> 
                     </a>
                 }
                 titleTypographyProps={{variant:'h5'}}
                 subheaderTypographyProps={{variant:'h6'}}
-
             />
         </AccordionDetails>
       </Accordion>

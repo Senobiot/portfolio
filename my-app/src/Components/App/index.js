@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { Navigation, Route } from "react-tiger-transition";
-import Home from './../Home'
-import About from './../About'
-import WorkCategories from './../WorkCategories'
-import { DetailScreen } from './../Works'
+import { Home } from '../'
+import { About } from '../'
+import { WorkCategories } from '../'
+import { DetailScreen } from '../'
 
-import './style.css'
+import './reset.css'
 import "react-tiger-transition/styles/main.min.css";
 
 const App = () => {
@@ -16,20 +16,21 @@ const App = () => {
   return (
     <BrowserRouter>
       <Navigation>
-        <Route exact path="/" component={Home}>
+        <Route exact path="/">
           <Home />
         </Route>
-        <Route exact path={'/About'} component={About}>
+        <Route exact path='/About'>
           <About />
         </Route>
-        <Route exact path="/works" component={WorkCategories}>
+        <Route exact path='/works'>
           <WorkCategories categoryHandler={categoryHandler} category={category}/>
         </Route>
-        <Route exact path="/works/:work" component={DetailScreen}>
+        <Route exact path='/works/:work'>
           <DetailScreen />
         </Route>
       </Navigation>
     </BrowserRouter>
   );
 }
+
 export default App;

@@ -1,8 +1,9 @@
 import React from "react";
 import { useSpring, animated } from 'react-spring';
+import { Screen, Link } from "react-tiger-transition";
+
 import "react-tiger-transition/styles/main.min.css";
 import './style.css'
-import { Screen, Link } from "react-tiger-transition";
 
 document.getElementById("root").style.height = "100vh";
 
@@ -39,4 +40,5 @@ return (
     <animated.div className='bg-card' style={{ transform: props.xy.interpolate(trans6) }} />
  </Screen>
 )};
+
 export default Home;
