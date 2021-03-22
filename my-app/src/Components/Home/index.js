@@ -1,9 +1,8 @@
 import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
 import { useSpring, animated } from 'react-spring';
 import "react-tiger-transition/styles/main.min.css";
 import './style.css'
-import { Navigation, Route, Screen, Link } from "react-tiger-transition";
+import { Screen, Link } from "react-tiger-transition";
 
 document.getElementById("root").style.height = "100vh";
 
@@ -22,13 +21,13 @@ return (
     <Link to="/About" transition='glide-right' className='tabSkew'>
         <div className='tabContent'>About me</div>
     </Link>
-    <Link to="/Works" transition='glide-left' className='tabSkew'>
+    <Link to="/works" transition='glide-left' className='tabSkew'>
         <div className='tabContent'>My Works</div>
     </Link>
-    <Link to="/Works" transition='glide-left' className='tabSkew'>
+    <Link to="/" transition='glide-left' className='tabSkew'>
         <div className='tabContent'>My Stack</div>
     </Link>
-    <Link to="/WorkCategories" transition='glide-left' className='tabSkew'>
+    <Link to="/" transition='glide-left' className='tabSkew'>
         <div className='tabContent'>Contacts</div>
     </Link>
     <animated.div className='card1' style={{ transform: props.xy.interpolate(trans1) }} />

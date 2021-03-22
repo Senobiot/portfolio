@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Home from './../Home/';
-import dataList from './data';
-import { BrowserRouter as Router, useParams } from "react-router-dom";
-import './style.css'
+import dataList from './data.js';
+import MediaCard from '../MediaCard'
+import { useParams } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -10,35 +9,18 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import Paper from "@material-ui/core/Paper";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import CloseIcon from "@material-ui/icons/Close";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
-import MediaCard from './MediaCard'
+
 import "react-tiger-transition/styles/main.min.css";
+import './style.css'
 import {
-  Navigation,
-  Route,
   Screen,
   Link,
-  scale,
   glideIn,
   glideOut,
   flip,
   glide,
-  cube
 } from "react-tiger-transition";
 
-cube({
-  name: "cube",
-  direction: "right",
-  duration: 200
-});
-scale({
-  name: "scale",
-  scale: 1.2,
-  exit: {
-    delay: 100
-  }
-});
 glide({
   name: "glide-left",
   direction: "left",
@@ -80,21 +62,24 @@ const useStyles = makeStyles(theme => ({
   screen: {
     backgroundColor: "white"
   },
-  loginScreen: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "column",
-    backgroundColor: "white"
-  },
   margin: {
     margin: theme.spacing(2)
   },
   menuButton: {
-    marginRight: theme.spacing(2)
+    margin: '0 15px',
+    color: '#6d747a',
+    '& a:visited': {
+        color: '#6d747a',
+    },
+    '& svg': {
+        fontSize: '28px',
+    },
   },
   title: {
-    flexGrow: 1
+    flexGrow: 1,
+    textTransform: 'uppercase',
+    fontWeight: 900,
+    color: '#6d747a'
   },
   menu: {
     width: "100%",
@@ -104,30 +89,17 @@ const useStyles = makeStyles(theme => ({
   feedItemRoot: {
     margin: theme.spacing(2)
   },
-  cancelAuth: {
-    position: "absolute",
-    top: 0,
-    right: 0,
-    margin: theme.spacing(2)
-  },
-  hide: {
-    opacity: 0,
-    visibility: "hidden",
-    zIndex: -1
-  },
 }));
 
-const Works = ( {works} ) => {
-  return (
-    <Screen className="WorksWrapper" style={{overflowY: 'auto'}}>
-      <FeedList works={works}/>
-    </Screen>
-  );
-};
+const Works = ( {works} ) => (
+  <Screen className="WorksWrapper" style={{ overflowY: 'auto' }}>
+    <FeedList works={works} />
+  </Screen>
+);
 
 export default Works;
 
-const DetailScreen = () => {
+export const DetailScreen = () => {
   const [ currentMemo, setMemo ] = useState({});
   const { work } = useParams();
   let current;
@@ -140,11 +112,11 @@ const DetailScreen = () => {
     if (work) {
       setMemo({ currentMemo: current });
     }
-  }, [work]);
+  }, [work, current]);
 
   return (
     <Screen className="detailWrapper">
-        <DetailHeader title={work}/>
+        <DetailHeader backRoute={'/works'} routeName={'Back to my works'}/>
         <div className="workBg" style={{ backgroundImage: `url(${current ? current.logo : currentMemo.logo})` }}></div>
         <MediaCard 
         image={current ? current.logo : currentMemo.logo}
@@ -160,13 +132,10 @@ const DetailScreen = () => {
   );
 };
 
-export { DetailScreen };
-
-const DetailHeader = ({ title }) => {
+export const DetailHeader = ({ backRoute , routeName, right}) => {
   const classes = useStyles();
   return (
-    <div style={{marginBottom: 100}}>
-      <AppBar position="static" color="default">
+      <AppBar color="default" style={{flexDirection: right ? 'row-reverse' : 'row'}}>
         <Toolbar>
           <IconButton
             edge="start"
@@ -174,37 +143,35 @@ const DetailHeader = ({ title }) => {
             color="inherit"
             aria-label="menu"
           >
-            <Link to="/WorkCategories" transition="glideOut-right">
-              <ArrowBackIcon />
+            <Link to={backRoute} transition={right ? "glideIn-left" : "glideOut-right"}>
+              <ArrowBackIcon style={{transform: right ? 'rotate(180deg)' : 'none'}}/>
             </Link>
           </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            {title}
+          <Typography variant="h6" className={classes.title} style={{order: right ? -1 : 0}}>
+            {routeName}
           </Typography>
         </Toolbar>
       </AppBar>
-    </div>
   );
 };
 
-const FeedItem = ({ work }) => {
-  return (
+const FeedItem = ({ work }) => 
+   (
     <Paper>
-      <Link to={`/detail/${work.name}`} transition="glideIn-left" style={{ backgroundColor: work.bgColor }} className="workTile">
+      <Link to={`/works/${work.name}`} transition="glideIn-left" style={{ backgroundColor: work.bgColor }} className="workTile">
           <Paper elevation={3} className="workPaper" style={{ backgroundImage: `url(${work.logo})` }}/>
           <h2>{work.name}</h2>
           <h3>{work.description}</h3>
       </Link>
     </Paper>
   );
-};
 
-const FeedList = ({works}) => {
-  return (
+const FeedList = ({works}) =>
+  (
     <React.Fragment>
       {works.map(el => (
         <FeedItem key={el.name} work={el}/>
       ))}
     </React.Fragment>
   );
-};
+

@@ -1,22 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import { makeStyles } from '@material-ui/core/styles';
-import { amber, purple, cyan, brown } from '@material-ui/core/colors';
+import Toolbar from "@material-ui/core/Toolbar";
 import Typography from '@material-ui/core/Typography';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
 import { CSSTransition } from 'react-transition-group';
 import { drop, Link } from 'react-tiger-transition';
 import dataList from '../Works/data'
 import Works from '../Works/'
 import IconButton from "@material-ui/core/IconButton";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import Avatar from '@material-ui/core/Avatar';
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -25,13 +21,20 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
   },
   menuButton: {
-    marginRight: 100,
+    marginRight: 15,
+    color: '#6d747a',
     '& a:visited': {
-        color: 'white',
+        color: '#6d747a',
     },
     '& svg': {
         fontSize: '28px',
     },
+  },
+  title: {
+    flexGrow: 1,
+    textTransform: 'uppercase',
+    fontWeight: 900,
+    color: '#6d747a'
   },
   tabsBtn: {
     fontWeight: 700,
@@ -80,18 +83,20 @@ const useStyles = makeStyles(theme => ({
 
 const tabs = Object.keys(dataList);
 
-const WorkCategories = () => {
+const WorkCategories = ({category, categoryHandler}) => {
   const classes = useStyles();
-  const [value, setValue] = React.useState(tabs[0]);
-  const [transition, setTransition] = React.useState('transition-left');
+  const [value, setValue] = useState(tabs[category]);
+  const [transition, setTransition] = useState('transition-left');
   const animation = 'drop';
 
   function handleTabChange(event, newValue) {
     setTransition(value > newValue ? 'transition-right' : 'transition-left');
     setValue(newValue);
+    categoryHandler(tabs.indexOf(newValue));
   }
 
-  React.useEffect(() => {
+  
+  useEffect(() => {
     const nextAnimation = { label: 'drop', func: drop };
     if (nextAnimation) {
       nextAnimation.func({
@@ -109,7 +114,8 @@ const WorkCategories = () => {
     <div className={classes.root}>
       <AppBar position="static" className={classes.header}>
 
-        <Tabs value={value} onChange={handleTabChange} centered classes={{indicator: classes.indicator }}> 
+        <Tabs value={value} onChange={handleTabChange} centered classes={{indicator: classes.indicator }}>
+        <Toolbar>
           <IconButton
             edge="start"
             className={classes.menuButton}
@@ -120,6 +126,10 @@ const WorkCategories = () => {
               <ArrowBackIcon />
             </Link>
           </IconButton>
+          <Typography variant="h6" className={classes.title}>
+            Home
+          </Typography>
+          </Toolbar>
           {tabs.map(tab => (
             <Tab key={tab} label={tab} value={tab} className={classes.tabsBtn}/>
           ))}
@@ -137,7 +147,7 @@ const WorkCategories = () => {
           >
             <div className={classes.transitionLayout}>
               <div className={classNames(classes.transitionScreen, classes[category])}>
-                <Works works={dataList[category]} category={category}/>
+                <Works works={dataList[category]} />
               </div>
             </div>
           </CSSTransition>

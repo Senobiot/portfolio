@@ -19,13 +19,23 @@ const useStyles = makeStyles({
   typography: {
     marginBottom: 20,
     textTransform: 'uppercase',
+  },
+  stackImg: {
+    width: 'auto',
+    height: '50px',
+    margin: '10px 15px'
+  },
+  detailPaper: {
+    width: '75vmin',
+    opacity: 0.8,
+    margin: '100px auto'
   }
 });
 
 export default function MediaCard({image, title, description, ghLink, deployLink, stack, additional, date}) {
   const classes = useStyles();
   return (
-    <Card className={classes.root} className="detailPaper">
+    <Card className={classes.detailPaper}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
@@ -41,8 +51,8 @@ export default function MediaCard({image, title, description, ghLink, deployLink
           <Typography variant="h6" color="textSecondary" component="p" style={{marginBottom: 20 + 'px'}}>
             {description}
           </Typography>
-          <Typography variant="h6" color="#cacaca" component="p" className={classes.typography}>
-            <span>Technologies used: <br></br></span>{stack ? stack.map((e,i) => <img key={i} src={e} className="stackImg"></img>) : null}
+          <Typography variant="h6" color="textPrimary" component="p" className={classes.typography}>
+            <span>Technologies used: <br></br></span>{stack ? stack.map((e,i) => <img key={i} src={e} alt='techLogo' className={classes.stackImg}></img>) : null}
           </Typography>
           <Typography variant="h6" color="textSecondary" component="p">
           <span >Additional info: </span>{additional}
@@ -50,11 +60,11 @@ export default function MediaCard({image, title, description, ghLink, deployLink
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="middle" color="primary">
-            <a target="_blank" rel="noopener noreferrer" href={ghLink} >Ghub Link</a>
+        <Button size="medium" color="primary">
+            <a target="_blank" rel="noopener noreferrer" href={ghLink} style={{fontWeight: 900}}>Ghub Link</a>
         </Button>
-        <Button size="middle" color="primary">
-            <a target="_blank" rel="noopener noreferrer" href={deployLink} >Deploy Link</a>
+        <Button size="medium" color="primary">
+            <a target="_blank" rel="noopener noreferrer" href={deployLink} style={{fontWeight: 900}} >Deploy Link</a>
         </Button>
       </CardActions>
     </Card>

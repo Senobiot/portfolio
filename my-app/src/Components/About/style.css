@@ -1,11 +1,21 @@
 .AboutWrapper {
-    position: relative;
-    margin: 0 auto;
-    overflow-y: hidden;
+    overflow-y: auto;
     display: flex;
-    width: 100vw;
-    height: 100vh;
-    padding: 0 150px;
-    font-family: 'Arial', serif;
-    background-color: rgb(78, 109, 78);
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 100px;
+    background-color: #5c6f80;
+}
+
+.aboutPaper {
+    opacity: 0.6;
+}
+
+.accordeonHeader, .cardHeader {
+    font-size: 20px !important;
+    letter-spacing: 2px !important;
+    color: #5c6f80;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    text-shadow: 0 1px 2px rgb(2, 2, 2);
 }

@@ -98,14 +98,3 @@
 	overflow: hidden;
 }
 
-.detailPaper {
-	width: 75vmin;
-	opacity: 0.8;
-	margin: 0 auto;
-}
-
-.stackImg {
-	width: auto;
-	height: 50px;
-	margin: 10px 15px;
-}
