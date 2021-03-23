@@ -7,4 +7,4 @@ export { default as MediaCard } from './MediaCard';
 export { default as WorkCategories } from './WorkCategories';
 export { dataList } from '../data';
 export { default as Works , DetailHeader, DetailScreen } from './Works';
-export { email, viber, skype, phone, telegram } from '../data'
+export { email, viber, skype, phone, telegram, material, css, html, jquery, redux, mongo, express, node, leaflet, spring, reactDark, js, react } from '../data'

@@ -11,6 +11,7 @@ export { default as crud } from './works/crud.jpg';
 export { default as momentum } from './works/momentum.jpg';
 export { default as webdev } from './works/webdev.jpg';
 export { default as react } from './works/react-logo.png';
+export { default as reactDark } from './works/react-dark.png';
 export { default as redux } from './works/redux-logo.png';
 export { default as express } from './works/express-logo.png';
 export { default as jquery } from './works/jquery-logo.png';

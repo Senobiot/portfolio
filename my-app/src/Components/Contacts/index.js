@@ -27,7 +27,7 @@ const useStyles = makeStyles({
   },
   links: {
     paddingTop: '30px',
-    width: 100,
+    width: 115,
     lineHeight: 3,
     filter: 'brightness(0) saturate(100%) invert(92%) sepia(6%) saturate(1120%) hue-rotate(25deg) brightness(86%) contrast(82%)',
     '&:hover': {
