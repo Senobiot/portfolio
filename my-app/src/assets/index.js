@@ -40,3 +40,9 @@ export { default as minskprom } from './about/minskprom.jpg';
 export { default as integral } from './about/integral.jpg';
 export { default as expert } from './about/expert.jpg';
 export { default as certificate } from './about/certificate.jpg';
+
+export { default as email } from './contacts/email.svg';
+export { default as phone } from './contacts/telephone.svg';
+export { default as skype } from './contacts/skype.svg';
+export { default as viber } from './contacts/viber.svg';
+export { default as telegram } from './contacts/telegram.svg';

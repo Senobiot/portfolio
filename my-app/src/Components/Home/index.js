@@ -25,10 +25,10 @@ return (
     <Link to="/works" transition='glide-left' className='tabSkew'>
         <div className='tabContent'>My Works</div>
     </Link>
-    <Link to="/" transition='glide-left' className='tabSkew'>
+    <Link to="/Stack" transition='glide-left' className='tabSkew'>
         <div className='tabContent'>My Stack</div>
     </Link>
-    <Link to="/" transition='glide-left' className='tabSkew'>
+    <Link to="/Contacts" transition='glide-left' className='tabSkew'>
         <div className='tabContent'>Contacts</div>
     </Link>
     <animated.div className='card1' style={{ transform: props.xy.interpolate(trans1) }} />

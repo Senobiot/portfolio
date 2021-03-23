@@ -2,6 +2,8 @@ import { js, leaflet, node, express, mongo, react, redux, material, spring, char
      crud, landingsPort, itangels, browsergame, clonewars, presLoadash, calculator, momentum, virtualKbd, presClone,
       puzzle, apple, photolanding, webdev, covid, shelter, english, windows } from '../assets'
 
+export { email, viber, skype, phone, telegram } from '../assets'  
+
 export const dataList = {
   JS: [
     {
@@ -145,8 +147,8 @@ export const dataList = {
     {
       id: 3-2,
       name: 'landings portfolio',
-      description: 'It\'s a landings portfolio like SPA but only JQuety used',
-      descriptionFull: 'It\'s a landings portfolio like SPA but only JQuety used',
+      description: 'It\'s a landings portfolio like SPA but only JQuery used',
+      descriptionFull: 'It\'s a landings portfolio like SPA but only JQuery used',
       ghLink: 'https://github.com/Senobiot/portfolio.github.io',
       deployLink: 'https://senobiot.github.io/portfolio.github.io/',
       stack: [jquery, html, css],

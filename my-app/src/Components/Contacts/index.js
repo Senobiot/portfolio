@@ -1,72 +1,89 @@
 import React from 'react';
+import { DetailHeader } from '../';
+import { Screen } from "react-tiger-transition";
+import { viber, email, skype, phone, telegram } from '../'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
-    boxShadow: 'inset 0 0 15px 10px #cacaca'
   },
-  media: {
-    height: 140,
+  contactsWrapper: {
+    overflowY: 'auto',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    paddingTop: '100px',
+    backgroundColor: '#bec29f',
   },
-  typography: {
-    marginBottom: 20,
-    textTransform: 'uppercase',
+  map: {
+    width: '100%',
+    minHeight: 345,
+    border: 0,
+    frameBorder: 0
   },
-  stackImg: {
-    width: 'auto',
-    height: '50px',
-    margin: '10px 15px'
+  links: {
+    paddingTop: '30px',
+    width: 100,
+    lineHeight: 3,
+    filter: 'brightness(0) saturate(100%) invert(92%) sepia(6%) saturate(1120%) hue-rotate(25deg) brightness(86%) contrast(82%)',
+    '&:hover': {
+      filter: 'none'
+    }
+  },
+  linksWrapper: {
+    justifyContent: 'space-around',
+    flexWrap: 'wrap'
+  },
+  catName: {
+    fontWeight: 900,
+    color: '#f2c535',
+    fontSize: 20,
+    letterSpacing: 2,
+    textShadow: '2px 2px 3px #000',
+  },
+  catValue: {
+    color: '#000',
+    fontWeight: 700
   },
   detailPaper: {
     width: '75vmin',
     opacity: 0.8,
-    margin: '100px auto'
+    margin: 'px auto'
   }
 });
 
-export default function MediaCard({image, title, description, ghLink, deployLink, stack, additional, date}) {
+const Contacts = () => {
   const classes = useStyles();
+  const linksData = [
+    {href: 'tel:+375257092352', logo: phone, alt: 'phoneLogo', catName: 'Phone', catValue: '+375(25)709-23-52'},
+    {href: 'mailto:inter_net@tut.by', logo: email, alt: 'mailLogo', catName: 'email', catValue: 'inter_net@tut.by'},
+    {href: 'viber://chat?number=%2B375257092352', logo: viber, alt: 'viberLogo', catName: 'Viber', catValue: '+375(25)709-23-52'},
+    {href: 'skype:live:.cid.7d9ad801c58aa76c?call', logo: skype, alt: 'skypeLogo', catName: 'skype', catValue: 'inter_net@tut.by'},
+    {href: 'tg://resolve?domain=Senobiot', logo: telegram, alt: 'TgramLogo', catName: 'Tgram', catValue: '@Senobiot'},
+
+  ]
   return (
+    <Screen className={classes.contactsWrapper}>
+      <DetailHeader backRoute={'/'} routeName={'Home'}/>
     <Card className={classes.detailPaper}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={image}
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h4" component="h2" className={classes.typography}>
-            {title}
-          </Typography>
-          <Typography gutterBottom variant="h5" component="h2" className={classes.typography}>
-            {date}
-          </Typography>
-          <Typography variant="h6" color="textSecondary" component="p" style={{marginBottom: 20 + 'px'}}>
-            {description}
-          </Typography>
-          <Typography variant="h6" color="textPrimary" component="p" className={classes.typography}>
-            <span>Technologies used: <br></br></span>{stack ? stack.map((e,i) => <img key={i} src={e} alt='techLogo' className={classes.stackImg}></img>) : null}
-          </Typography>
-          <Typography variant="h6" color="textSecondary" component="p">
-          <span >Additional info: </span>{additional}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
+        <iframe className={classes.map} title="myMap" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2350.3059342616016!2d27.478719416198473!3d53.90853928010069!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46dbc53670090d95%3A0x6d6f1601259b2831!2z0KHQv9C-0YDRgtC40LLQvdCw0Y8!5e0!3m2!1sru!2sby!4v1616492202662!5m2!1sru!2sby" width="600" height="450" loading="lazy"></iframe>
+      <CardActions className={classes.linksWrapper}>
+        {linksData.map(e =>  
         <Button size="medium" color="primary">
-            <a target="_blank" rel="noopener noreferrer" href={ghLink} style={{fontWeight: 900}}>Ghub Link</a>
-        </Button>
-        <Button size="medium" color="primary">
-            <a target="_blank" rel="noopener noreferrer" href={deployLink} style={{fontWeight: 900}} >Deploy Link</a>
-        </Button>
+          <a href={e.href} className={classes.links}>
+            <img src={e.logo} className={classes.linksLogos} alt={e.alt} />
+            <span className={classes.catName}>{e.catName}<br></br></span>
+            <span className={classes.catValue}> {e.catValue}</span>
+          </a>
+        </Button>)}
       </CardActions>
     </Card>
+    </Screen>
   );
 }
+
+export default Contacts;

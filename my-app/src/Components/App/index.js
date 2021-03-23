@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { Navigation, Route } from "react-tiger-transition";
-import { Home } from '../'
+import { Home } from '../';
 import { About } from '../'
-import { WorkCategories } from '../'
-import { DetailScreen } from '../'
+import { Contacts } from '../';
+import { Stack } from '../'
+import { WorkCategories } from '../';
+import { DetailScreen } from '../';
 
 import './reset.css'
 import "react-tiger-transition/styles/main.min.css";
@@ -27,6 +29,12 @@ const App = () => {
         </Route>
         <Route exact path='/works/:work'>
           <DetailScreen />
+        </Route>
+        <Route exact path='/Stack'>
+          <Stack />
+        </Route>
+        <Route exact path='/Contacts'>
+          <Contacts />
         </Route>
       </Navigation>
     </BrowserRouter>
