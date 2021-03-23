@@ -136,6 +136,7 @@ export const DetailHeader = ({ backRoute , routeName, right}) => {
   const classes = useStyles();
   return (
       <AppBar color="default" style={{flexDirection: right ? 'row-reverse' : 'row'}}>
+        <Link to={backRoute} transition={right ? "glideIn-left" : "glideOut-right"}>
         <Toolbar>
           <IconButton
             edge="start"
@@ -143,14 +144,13 @@ export const DetailHeader = ({ backRoute , routeName, right}) => {
             color="inherit"
             aria-label="menu"
           >
-            <Link to={backRoute} transition={right ? "glideIn-left" : "glideOut-right"}>
               <ArrowBackIcon style={{transform: right ? 'rotate(180deg)' : 'none'}}/>
-            </Link>
           </IconButton>
           <Typography variant="h6" className={classes.title} style={{order: right ? -1 : 0}}>
             {routeName}
           </Typography>
         </Toolbar>
+        </Link>
       </AppBar>
   );
 };

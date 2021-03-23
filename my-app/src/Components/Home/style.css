@@ -72,23 +72,23 @@
 }
 
 .tabSkew:nth-child(1):after {
-    background-image: url('./../../assets/home/siluet.png');
+    background-image: url('./../../assets/home/siluet.webp');
 }
 
 .tabSkew:nth-child(2):after {
-    background-image: url('./../../assets/home/papers.png');
+    background-image: url('./../../assets/home/papers.webp');
     background-size: 50%;
     opacity: 0.4;
 }
 
 .tabSkew:nth-child(3):after {
-    background-image: url('./../../assets/home/tech.png');
+    background-image: url('./../../assets/home/tech.webp');
     background-size: 50%;
     opacity: 0.5;
 }
 
 .tabSkew:nth-child(4):after {
-    background-image: url('./../../assets/home/phone.png');
+    background-image: url('./../../assets/home/phone.webp');
     background-size: 50%;
     opacity: 0.7;
 }
@@ -126,7 +126,7 @@
     left: 10px;
     height: 100px;
     z-index: -2;
-    background: url('../../assets/home/css.png') no-repeat 50%/cover;
+    background: url('../../assets/home/css.webp') no-repeat 50%/cover;
     filter: blur(1px) grayscale(0.5);
   }
   
@@ -137,7 +137,7 @@
     left: 50px;
     height: 200px;
     z-index: -1;
-    background: url('../../assets/home/html.png') no-repeat 50%/cover;
+    background: url('../../assets/home/html.webp') no-repeat 50%/cover;
     filter: blur(1px);
     opacity: 0.4;
   }
@@ -148,7 +148,7 @@
     left: 100px;
     width: 200px;
     height: 250px;
-    background: url('../../assets/home/js.png') no-repeat 50%/contain;
+    background: url('../../assets/home/js.webp') no-repeat 50%/contain;
     filter: blur(1px) grayscale(0.5);
     opacity: 0.5;
     transform-style: preserve-3d;
@@ -161,7 +161,7 @@
     width: 175px;
     height: 175px;
     z-index: -1;
-    background: url('../../assets/home/react.png') repeat-x 50%/contain;
+    background: url('../../assets/home/react.webp') repeat-x 50%/contain;
     filter: blur(1px);
   }
   
@@ -172,7 +172,7 @@
     width: 150px;
     height: 150px;
     z-index: -1;
-    background: url('../../assets/home/redux.png') no-repeat 50%/contain;
+    background: url('../../assets/home/redux.webp') no-repeat 50%/contain;
     filter: blur(1px) grayscale(0.5);
   }
 
@@ -183,7 +183,7 @@
     width: 200px;
     height: 200px;
     z-index: -1;
-    background: url('../../assets/home/node.png') no-repeat 50%/contain;
+    background: url('../../assets/home/node.webp') no-repeat 50%/contain;
     filter: blur(1px) grayscale(0.5);
     transition: 0.3s;
     transition-timing-function: cubic-bezier(.25, .1, .25, 1);
@@ -197,5 +197,80 @@
     height: 100vh;
     z-index: -2;
     opacity: 0.5;
-    background: url('../../assets/home/main-bg.jpg') no-repeat 50%/cover;
+    background: url('../../assets/home/main-bg.webp') no-repeat 50%/cover;
+  }
+
+  @media (max-width: 1365px) {
+    .card1, .card2, .card3, .card4, .card5, .card6 {
+        display: none;
+    }
+    .tabWrapper {
+        width: 100vw;
+        padding: 20px;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .tabSkew {
+        flex: inherit;
+        flex-grow: 0;
+        width: 40vw;
+        height: 40%;
+        max-height: 40vw;
+        transform: none;
+        filter: none;
+        font-size: 24px;
+        border-radius: 10px;
+        
+    }
+    .tabSkew:after {
+        transform: none;
+        z-index: auto;
+    }
+    .tabSkew:hover {
+        font-size: 24px;
+        flex: inherit;
+    }
+    .tabContent {
+        padding-top: 20px;
+        transform: none;
+        align-items: flex-start;
+        text-shadow: 1px 1px 3px #000;
+    }
+    .tabSkew:nth-child(1) {
+        background-color: #5c6f80;
+    }
+    
+    .tabSkew:nth-child(2) {
+        background-color: #94859c;
+    }
+    
+    .tabSkew:nth-child(3) {
+        background-color: #b2c5a9;
+    }
+    
+    .tabSkew:nth-child(4) {
+        background-color: #bec29f;
+    }
+    .tabSkew:nth-child(n + 1):after {
+        background-size: contain;
+        opacity: 0.3;
+    }
+  }
+
+  @media (max-width: 467px) {
+    .tabSkew {
+        flex: inherit;
+        flex-grow: 0;
+        width: 90vw;
+        height: 40%;
+        max-height: 40vw;
+        transform: none;
+        filter: none;
+        font-size: 24px;
+        border-radius: 10px;
+    }
+    .tabSkew:nth-child(n + 1):after {
+        background-size: 25%;
+    }
   }

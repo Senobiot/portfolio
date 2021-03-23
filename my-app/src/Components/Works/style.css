@@ -1,5 +1,6 @@
 .WorksWrapper {
 	height: 100%;
+	background-color: #cfd8dc;
 }
 .WorksHeader {
 	height: 60px;
@@ -61,6 +62,7 @@
 
 .workTile h2, h3 {
 	display: flex;
+	flex-wrap: wrap;
 	font-weight: 700;
     text-shadow: 1px 2px 5px #000;
     font-size: 24px;
@@ -98,3 +100,61 @@
 	overflow: hidden;
 }
 
+@media (max-width: 1365px) {
+	.detailWrapper {
+		overflow: auto;
+	}
+	.workPaper {
+		height: 60%;
+		margin: 20px;
+	}
+	.workTile {
+		padding: 0;
+		align-content: center;
+		justify-content: center;
+	}
+	.workTile h2, h3 {
+		width: 70%;
+		font-size: 24px;
+		padding: 0 10px;
+	}
+	.workTile h3 {
+		font-size: 18px;
+	}
+}
+
+@media (max-width: 767px) {
+	.workTile {
+		flex-direction: row;
+		height: auto;
+		align-items: center;
+	}
+	.workPaper {
+		width: 30%;
+		height: 120px;
+	}
+	.workTile h2 {
+		width: 60%;
+	}
+	.workTile h3 {
+		padding: 20px;
+		width: 100%;
+	}
+}
+
+@media (max-width: 567px) {
+	.workTile {
+		flex-direction: row;
+		height: auto;
+		align-items: center;
+	}
+	.workPaper {
+		width: 240px;
+		height: 140px;
+	}
+	.workTile h2, h3 {
+		line-height: 2;
+		padding: 0 20px;
+		width: 100%;
+	}
+}

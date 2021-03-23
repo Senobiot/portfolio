@@ -16,6 +16,12 @@ import { myPhoto, univerImg, rsImg, nexo, minskprom, integral, expert, certifica
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: '50vw',
+    '@media (max-width:1365px)': {
+      maxWidth: '75vw',
+    },
+    '@media (max-width:767px)': {
+      maxWidth: '99vw',
+    },
   },
   expand: {
     transform: 'rotate(0deg)',
@@ -34,19 +40,30 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     width: '10vw',
     height: '10vw',
-    boxShadow:'0px 0px 2px 3px #5c6f80'
+    boxShadow:'0px 0px 2px 3px #5c6f80',
+    '@media (max-width:767px)': {
+      minWidth: 75,
+      minHeight: 75,
+    },
   },
   avatarSx: {
     width: '5vw',
     height: '5vw',
-    boxShadow:'0px 0px 2px 3px #5c6f80'
+    boxShadow:'0px 0px 2px 3px #5c6f80',
+    '@media (max-width:767px)': {
+      minWidth: 50,
+      minHeight: 50,
+    },
   },
   avatarImg: {
       width: '100%'
   },
   accDetails: {
       display: 'flex',
-      flexWrap: 'wrap'
+      flexWrap: 'wrap',
+      '@media (max-width:767px)': {
+        padding: '8px 5px'
+      },
   },
   accHeader: {
     fontSize: '20px',
@@ -65,6 +82,9 @@ const useStyles = makeStyles((theme) => ({
       fontWeight: 700,
       textTransform: 'uppercase',
       textShadow: '0 1px 2px rgb(2, 2, 2)',
+      '@media (max-width:767px)': {
+        fontSize: '14px',
+      },
   }
 }));
 

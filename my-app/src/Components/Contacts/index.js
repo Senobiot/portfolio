@@ -28,8 +28,15 @@ const useStyles = makeStyles({
   links: {
     paddingTop: '30px',
     width: 115,
+    '@media (max-width:767px)': {
+      width: '45vw',
+      maxWidth: 110
+    },
     lineHeight: 3,
     filter: 'brightness(0) saturate(100%) invert(92%) sepia(6%) saturate(1120%) hue-rotate(25deg) brightness(86%) contrast(82%)',
+    '@media (max-width:1365px)': {
+      filter: 'none'
+    },
     '&:hover': {
       filter: 'none'
     }
@@ -51,6 +58,12 @@ const useStyles = makeStyles({
   },
   detailPaper: {
     width: '75vmin',
+    '@media (max-width:1365px)': {
+      width: '60vw'
+    },
+    '@media (max-width:767px)': {
+      width: '98vw'
+    },
     opacity: 0.8,
     margin: 'px auto'
   }

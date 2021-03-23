@@ -11,7 +11,7 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
-    boxShadow: 'inset 0 0 15px 10px #cacaca'
+    boxShadow: 'inset 0 0 15px 10px #cacaca',
   },
   media: {
     height: 140,
@@ -28,7 +28,16 @@ const useStyles = makeStyles({
   detailPaper: {
     width: '75vmin',
     opacity: 0.8,
-    margin: '100px auto'
+    margin: '100px auto',
+    '@media (max-width:1365px)': {
+      width: '75%',
+      marginBottom: 15,
+    },
+    '@media (max-width:567px)': {
+      width: '98%',
+      opacity: 1,
+      marginTop: 65,
+    },
   }
 });
 

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { DetailHeader } from '../';
 import { Screen } from "react-tiger-transition";
 import { useSpring, animated } from 'react-spring'
-import { js,  css, html, jquery, redux, mongo, express, node, leaflet, spring, material, reactDark, react } from '../'
+import { js,  css, html, jquery, redux, mongo, express, node, leaflet, spring, material, react } from '../'
 import './styles.css'
 
 const calc = (x, y) => [-(y - window.innerHeight / 2) / 20, (x - window.innerWidth / 2) / 20, 1.1];
@@ -14,8 +14,19 @@ const Stack = () => {
   const techImgArrayMain = [ js, css, html, react, redux ];
   const techImgArrayAdd = [ node, express, mongo ];
   const techImgArrayLibs = [ material, jquery, leaflet, spring ];
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+      window.addEventListener("resize", updateWidthAndHeight);
+      return () => window.removeEventListener("resize", updateWidthAndHeight);
+  });
+
+  const updateWidthAndHeight = () => {
+      setWidth(window.innerWidth);
+  };
+
   return (
-    <Screen className="contactsWrapper" onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}>
+    <Screen className="contactsWrapper" onMouseMove={ width >= 1366 ? ({ clientX: x, clientY: y }) => set({ xys: calc(x, y) }) : null}>
       <DetailHeader backRoute={'/'} routeName={'Home'}/>
       <div className="categoryLine">Main Technologies Stack</div>
       {
@@ -52,4 +63,3 @@ const Stack = () => {
 }
 
 export default Stack;
-

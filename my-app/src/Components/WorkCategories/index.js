@@ -30,18 +30,36 @@ const useStyles = makeStyles(theme => ({
     '& svg': {
         fontSize: '28px',
     },
+    '@media (max-width:430px)': {
+      display: 'none'
+    },
   },
   title: {
     flexGrow: 1,
     textTransform: 'uppercase',
     fontWeight: 900,
-    color: '#6d747a'
+    color: '#6d747a',
+    '@media (max-width:430px)': {
+      fontSize: '14px',
+    },
   },
   tabsBtn: {
     fontWeight: 700,
     textShadow: '1px 2px 5px #000',
     marginRight: 70,
-    fontSize: '20px'
+    fontSize: '20px',
+    '@media (max-width:1365px)': {
+      marginRight: 0,
+      minWidth: 90
+    },
+    '@media (max-width:567px)': {
+      fontSize: '16px',
+      minWidth: 50
+    },
+    '@media (max-width:430px)': {
+      fontSize: '14px',
+      minWidth: 0
+    },
   },
   formControl: {
     margin: theme.spacing(0, 0, 2, 2),
@@ -115,23 +133,22 @@ const WorkCategories = ({category, categoryHandler}) => {
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.header}>
-
         <Tabs value={value} onChange={handleTabChange} centered classes={{indicator: classes.indicator }}>
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-          >
-            <Link to="/" transition="glideOut-right">
-              <ArrowBackIcon />
-            </Link>
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            Home
-          </Typography>
-          </Toolbar>
+          <Link to="/" transition="glideOut-right">
+            <Toolbar>
+              <IconButton
+                edge="start"
+                className={classes.menuButton}
+                color="inherit"
+                aria-label="menu"
+              >
+                <ArrowBackIcon />
+              </IconButton>
+              <Typography variant="h6" className={classes.title}>
+                Home
+              </Typography>
+            </Toolbar>
+          </Link>
           {tabs.map(tab => (
             <Tab key={tab} label={tab} value={tab} className={classes.tabsBtn}/>
           ))}

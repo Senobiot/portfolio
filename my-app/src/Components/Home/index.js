@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSpring, animated } from 'react-spring';
 import { Screen, Link } from "react-tiger-transition";
 
@@ -16,9 +16,21 @@ const trans5 = (x, y) => `rotate(${-x / 4}deg)`;
 const trans6 = (x, y) => `translate3d(${x / 25}px,${1}px,0)`;
 
 const Home = () => {
+    const [width, setWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+        window.addEventListener("resize", updateWidthAndHeight);
+        return () => window.removeEventListener("resize", updateWidthAndHeight);
+    });
+
+    const updateWidthAndHeight = () => {
+        setWidth(window.innerWidth);
+    };
+
     const [props, set] = useSpring(() => ({ xy: [0, 0], config: { mass: 10, tension: 550, friction: 140 } }));
+
 return (
- <Screen className='tabWrapper' onMouseMove={({ clientX: x, clientY: y }) => set({ xy: calc(x, y) })}>
+ <Screen className='tabWrapper' onMouseMove={ width >= 1366 ? ({ clientX: x, clientY: y }) => set({ xy: calc(x, y) }) : null}>
     <Link to="/About" transition='glide-right' className='tabSkew'>
         <div className='tabContent'>About me</div>
     </Link>
@@ -36,7 +48,7 @@ return (
     <animated.div className='card3' style={{ transform: props.xy.interpolate(trans3) }} />
     <animated.div className='card4' style={{ transform: props.xy.interpolate(trans4) }} />
     <animated.div className='card5' style={{ transform: props.xy.interpolate(trans5) }} />
-    <animated.div className='card6' />
+    <div className='card6' />
     <animated.div className='bg-card' style={{ transform: props.xy.interpolate(trans6) }} />
  </Screen>
 )};
