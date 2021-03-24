@@ -2,7 +2,7 @@ import { js, leaflet, node, express, mongo, react, redux, material, spring, char
      crud, landingsPort, itangels, browsergame, clonewars, presLoadash, calculator, momentum, virtualKbd, presClone,
       puzzle, apple, photolanding, webdev, covid, shelter, english, windows } from '../assets'
 
-export { email, viber, skype, phone, telegram, material, css, html, jquery, redux, mongo, express, node, leaflet, spring, reactDark, react, js } from '../assets'  
+export { email, viber, skype, phone, telegram, material, css, html, jquery, redux, mongo, express, node, leaflet, spring, sass, react, js } from '../assets'  
 
 export const dataList = {
   JS: [
