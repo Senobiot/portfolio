@@ -206,8 +206,9 @@
     }
     .tabWrapper {
         width: 100vw;
-        padding: 20px;
+        padding: 60px 20px;
         flex-wrap: wrap;
+        flex-direction: column;
         justify-content: space-around;
         align-items: center;
     }
@@ -264,7 +265,7 @@
         flex-grow: 0;
         width: 90vw;
         height: 40%;
-        max-height: 40vw;
+        max-height: 20vh;
         transform: none;
         filter: none;
         font-size: 24px;

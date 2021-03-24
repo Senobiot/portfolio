@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { BrowserRouter } from "react-router-dom";
-import { Navigation, Route } from "react-tiger-transition";
+import React, { useState } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { Navigation, Route } from 'react-tiger-transition';
 import { Home } from '../';
-import { About } from '../'
+import { About } from '../';
 import { Contacts } from '../';
-import { Stack } from '../'
+import { Stack } from '../';
 import { WorkCategories } from '../';
 import { DetailScreen } from '../';
 
-import './reset.css'
-import "react-tiger-transition/styles/main.min.css";
+import './reset.css';
+import 'react-tiger-transition/styles/main.min.css';
 
 const App = () => {
   const [category, setCategory] = useState(0);
@@ -21,24 +21,27 @@ const App = () => {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route exact path='/About'>
+        <Route exact path="/About">
           <About />
         </Route>
-        <Route exact path='/works'>
-          <WorkCategories categoryHandler={categoryHandler} category={category}/>
+        <Route exact path="/works">
+          <WorkCategories
+            categoryHandler={categoryHandler}
+            category={category}
+          />
         </Route>
-        <Route exact path='/works/:work'>
+        <Route exact path="/works/:work">
           <DetailScreen />
         </Route>
-        <Route exact path='/Stack'>
+        <Route exact path="/Stack">
           <Stack />
         </Route>
-        <Route exact path='/Contacts'>
+        <Route exact path="/Contacts">
           <Contacts />
         </Route>
       </Navigation>
     </BrowserRouter>
   );
-}
+};
 
 export default App;

@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { Works } from '../'
+import { Works } from '../';
 import classNames from 'classnames';
 import { makeStyles } from '@material-ui/core/styles';
-import Toolbar from "@material-ui/core/Toolbar";
+import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { CSSTransition } from 'react-transition-group';
 import { drop, Link } from 'react-tiger-transition';
-import { dataList } from '../'
+import { dataList } from '../';
 
-import IconButton from "@material-ui/core/IconButton";
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import IconButton from '@material-ui/core/IconButton';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     display: 'flex',
@@ -25,13 +24,13 @@ const useStyles = makeStyles(theme => ({
     marginRight: 15,
     color: '#6d747a',
     '& a:visited': {
-        color: '#6d747a',
+      color: '#6d747a',
     },
     '& svg': {
-        fontSize: '28px',
+      fontSize: '28px',
     },
     '@media (max-width:430px)': {
-      display: 'none'
+      display: 'none',
     },
   },
   title: {
@@ -50,15 +49,15 @@ const useStyles = makeStyles(theme => ({
     fontSize: '20px',
     '@media (max-width:1365px)': {
       marginRight: 0,
-      minWidth: 90
+      minWidth: 90,
     },
     '@media (max-width:567px)': {
       fontSize: '16px',
-      minWidth: 50
+      minWidth: 50,
     },
     '@media (max-width:430px)': {
       fontSize: '14px',
-      minWidth: 0
+      minWidth: 0,
     },
   },
   formControl: {
@@ -100,9 +99,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-
-
-const WorkCategories = ({category, categoryHandler}) => {
+const WorkCategories = ({ category, categoryHandler }) => {
   const tabs = Object.keys(dataList);
   const classes = useStyles();
   const [value, setValue] = useState(tabs[category]);
@@ -115,7 +112,6 @@ const WorkCategories = ({category, categoryHandler}) => {
     categoryHandler(tabs.indexOf(newValue));
   }
 
-  
   useEffect(() => {
     const nextAnimation = { label: 'drop', func: drop };
     if (nextAnimation) {
@@ -133,7 +129,12 @@ const WorkCategories = ({category, categoryHandler}) => {
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.header}>
-        <Tabs value={value} onChange={handleTabChange} centered classes={{indicator: classes.indicator }}>
+        <Tabs
+          value={value}
+          onChange={handleTabChange}
+          centered
+          classes={{ indicator: classes.indicator }}
+        >
           <Link to="/" transition="glideOut-right">
             <Toolbar>
               <IconButton
@@ -149,13 +150,18 @@ const WorkCategories = ({category, categoryHandler}) => {
               </Typography>
             </Toolbar>
           </Link>
-          {tabs.map(tab => (
-            <Tab key={tab} label={tab} value={tab} className={classes.tabsBtn}/>
+          {tabs.map((tab) => (
+            <Tab
+              key={tab}
+              label={tab}
+              value={tab}
+              className={classes.tabsBtn}
+            />
           ))}
         </Tabs>
       </AppBar>
       <div className={classes.transitionContainer}>
-        {tabs.map(category => (
+        {tabs.map((category) => (
           <CSSTransition
             key={category}
             mountOnEnter
@@ -165,7 +171,12 @@ const WorkCategories = ({category, categoryHandler}) => {
             classNames={transition}
           >
             <div className={classes.transitionLayout}>
-              <div className={classNames(classes.transitionScreen, classes[category])}>
+              <div
+                className={classNames(
+                  classes.transitionScreen,
+                  classes[category]
+                )}
+              >
                 <Works works={dataList[category]} />
               </div>
             </div>
@@ -174,6 +185,6 @@ const WorkCategories = ({category, categoryHandler}) => {
       </div>
     </div>
   );
-}
+};
 
 export default WorkCategories;
